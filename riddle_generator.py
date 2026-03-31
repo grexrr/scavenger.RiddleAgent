@@ -1,6 +1,5 @@
 import os
 import json
-import lmstudio as lms
 from openai import OpenAI
 from pymongo import MongoClient
 from dotenv import load_dotenv
@@ -16,6 +15,7 @@ class RiddleGenerator:
         self.riddle = ""
 
         if self.mode == "local":
+            import lmstudio as lms
             self.model = lms.llm(os.getenv('LMSTUDIO_MODEL'))
         elif self.mode == "chatgpt":
             api_key = os.getenv("OPENAI_API_KEY")
